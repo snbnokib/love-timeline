@@ -1,0 +1,245 @@
+/* style.css - Clean and easy to understand version */
+
+/* Root variables */
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --accent: #ff6b81;
+  --glass: rgba(255,255,255,0.04);
+  --muted: #9aa4b2;
+  --maxWidth: 1200px;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--bg), #071022);
+  color: #e6eef8;
+  scroll-behavior: smooth;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 900px;
+}
+
+.badge {
+  background: linear-gradient(90deg, var(--accent), #ff9aa8);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #06101a;
+  display: inline-block;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  margin: 0;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.controls {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  background: var(--glass);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  color: inherit;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg,var(--accent),#ff9aa8);
+  color: #07101a;
+  border: none;
+}
+
+/* Main content wrapper */
+.wrap {
+  max-width: var(--maxWidth);
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 18px;
+  color: #cfe7ff;
+}
+
+/* Gallery grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.tile {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+
+.tile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 50px rgba(2,6,23,0.6);
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.2));
+  font-size: 0.85rem;
+}
+
+/* About, love letter, timeline, ending sections */
+.about, .love-letter, .timeline, .ending {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 18px;
+  text-align: center;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.timeline .events {
+  border-left: 2px solid rgba(255,255,255,0.1);
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ending h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  z-index: 60;
+}
+
+.lightbox.visible {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: calc(100% - 160px);
+  max-height: 80vh;
+  border-radius: 14px;
+  box-shadow: 0 30px 60px rgba(2,6,23,0.7);
+}
+
+.lb-controls {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  display: flex;
+  gap: 8px;
+}
+
+/* Footer */
+footer {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .tile img {
+    height: 140px;
+  }
+  .lightbox img {
+    max-width: calc(100% - 40px);
+  }
+}
+
+/* Floating hearts animation */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  animation: floatHeart 5s infinite ease-in;
+}
+
+.heart:before, .heart:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.heart:after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(-400px) rotate(45deg); opacity: 0; }
+}
